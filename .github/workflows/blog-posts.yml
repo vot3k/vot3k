@@ -1,0 +1,20 @@
+name: Update Latest Blog Posts
+
+on:
+  schedule:
+    - cron: '0 12 * * *'  # Hourly
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  update-readme:
+    name: Update README with latest blog posts
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@v1
+        with:
+          feed_list: "https://blog.jimmyvo.com/index.xml"
+          max_post_count: "5"
+          date_format: "%Y-%m-%d"
+          template: '<li><a href="$url">$title</a> <span>$date</span></li>'
+          commit_message: "Update latest blog posts"

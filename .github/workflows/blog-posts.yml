@@ -12,7 +12,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Fetch latest posts
-        uses: armingli/readme-update-actions@v2
+        uses: armingli/readme-update-actions@v1.1.1
         with:
           rss_list: "https://blog.jimmyvo.com/index.xml"
           max_post: "5"

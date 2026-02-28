@@ -7,13 +7,12 @@ on:
 
 jobs:
   update-readme:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Fetch latest posts
-        uses: armingli/readme-update-actions@v1.1.1
+      - uses: actions/checkout@v4
+      - uses: gautamkrishnar/blog-post-workflow@v1
         with:
-          rss_list: "https://blog.jimmyvo.com/index.xml"
-          max_post: "5"
-          commit_message: "🤖 Update latest blog posts"
+          feed_list: "https://blog.jimmyvo.com/index.xml" # Replace with your blog RSS address
+          max_post_count: 3 # Sync the latest 5 articles
+          readme_path: ./README.md # Target README file
+          commit_message: "Update README with latest blog posts"
